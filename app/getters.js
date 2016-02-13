@@ -8,7 +8,7 @@ const cartItemsSelector = state => state.cartItems
 const cartProductsSelector = createSelector(
   productsSelector,
   cartItemsSelector,
-  (products, cartItems) => cartItems.map((item => products.find((product) => product.id === item.id )))
+  (products, cartItems) => cartItems.map(item => Object.assign({}, products.find((product) => product.id === item.id ), {qty: item.qty}))
 )
 
 const cartTotalSelector = createSelector(
