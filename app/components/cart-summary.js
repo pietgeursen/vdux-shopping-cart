@@ -1,9 +1,9 @@
 import h from 'vdux/element'
 
+import {cartProductsSelector} from '../getters'
+
 function render(state) {
-  const products = state.props.cartItems.map(item => {
-    return state.props.products.find(product => product.id === item.id )
-  })
+	const products = cartProductsSelector(state.props)
   return h(
     'div', {id: 'side'}, [
 			h('div', {id: 'cart'}, [
