@@ -12,11 +12,13 @@ const cartProductsSelector = createSelector(
 )
 
 const cartTotalSelector = createSelector(
-    
+  cartProductsSelector,
+  (products) => products.reduce((total, product) => (total + (product.price * product.qty)), 0)
 )
 
 module.exports = {
   productsSelector,
   cartItemsSelector,
-  cartProductsSelector
+  cartProductsSelector,
+  cartTotalSelector
 }
