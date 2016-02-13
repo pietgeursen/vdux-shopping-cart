@@ -5,7 +5,7 @@ function render(state) {
     return state.props.products.find(product => product.id === item.id )
   })
   return h(
-    'div', {id: 'cart'}, [
+    'div', {id: 'side'}, [
       h('h4', {}, ['Shopping Cart']),
       ...products.map(product => h('div', {}, product.name))
      ]) 

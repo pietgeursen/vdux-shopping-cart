@@ -7,10 +7,10 @@ import { initialiseApp } from '../actions.js'
 
 function render(state) {
   return h(Layout,
-    {class: 'main'},
+    {id: 'main'},
     [
       h(CartSummary, state.props),
-      router(state.props.url, state.props),
+      h('div', {id: 'main'}, router(state.props.url, state.props)),
     ]
   )
 }
