@@ -4,6 +4,7 @@ import {cartProductsSelector, cartTotalSelector} from '../getters'
 
 function render(state) {
 	const products = cartProductsSelector(state.props)
+	const total = cartTotalSelector(state.props)
   return h(
     'div', {id: 'side'}, [
 			h('div', {id: 'cart'}, [
@@ -12,7 +13,7 @@ function render(state) {
 					h('div', {}, product.name ),
 					h('div', {class: 'qty'}, product.qty)
 				]))),
-				h('div', {class: 'total'}, cartTotalSelector(state.props))
+				h('div', {class: 'total'}, total)
 			])	
      ]) 
 }
