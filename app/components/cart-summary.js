@@ -1,13 +1,20 @@
 import h from 'vdux/element'
 
+import {cartProductsSelector, cartTotalSelector} from '../getters'
+
 function render(state) {
-  const products = state.props.cartItems.map(item => {
-    return state.props.products.find(product => product.id === item.id )
-  })
+	const products = cartProductsSelector(state.props)
+	const total = cartTotalSelector(state.props)
   return h(
     'div', {id: 'side'}, [
-      h('h4', {}, ['Shopping Cart']),
-      ...products.map(product => h('div', {}, product.name))
+			h('div', {id: 'cart'}, [
+      	h('h4', {textContent: 'Shopping Cart'}),
+				h('div', {class: 'products'}, products.map(product => h('div', {class: 'product'}, [
+					h('div', {}, product.name ),
+					h('div', {class: 'qty'}, product.qty)
+				]))),
+				h('div', {class: 'total'}, total)
+			])	
      ]) 
 }
 
