@@ -6,7 +6,7 @@ export default function render({props, children}){
     renderNav({
       items: [{
         href: '/',
-        text: 'home'
+        text: 'Home'
       }] 
     }),
     h('div', {}, children)

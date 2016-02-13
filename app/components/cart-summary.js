@@ -6,8 +6,10 @@ function render(state) {
   })
   return h(
     'div', {id: 'side'}, [
-      h('h4', {}, ['Shopping Cart']),
-      ...products.map(product => h('div', {}, product.name))
+			h('div', {id: 'cart'}, [
+      	h('h4', {textContent: 'Shopping Cart'}),
+				h('div', {class: 'products'}, products.map(product => h('div', {}, product.name)))
+			])	
      ]) 
 }
 
