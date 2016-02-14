@@ -13,7 +13,10 @@ function render(state) {
 					h('div', {}, product.name ),
 					h('div', {class: 'qty'}, product.qty)
 				]))),
-				h('div', {class: 'total'}, total)
+				h('div', {class: 'total'}, [
+					h('h5', {textContent: 'Total:'}),
+					total
+				])
 			])	
      ]) 
 }

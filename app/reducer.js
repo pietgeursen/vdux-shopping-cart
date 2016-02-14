@@ -18,12 +18,19 @@ const INITIAL_STATE ={
 } 
 
 
+function addItemToCart(state, product){
+	const itemIndex = state.cartItems.findIndex(item => item.id === product.id) 
+	return (itemIndex != -1) ?
+		State.update(state, {cartItems: {[itemIndex]: {qty: {$apply: qty => qty + 1}}}}) :
+		State.update(state, {cartItems: {$push: [CartItem({id: product.id, qty: 1})] }})
+}
+
 function reducer(state = INITIAL_STATE, action) {
   switch(action.type) {
     case URL_DID_CHANGE:
       return State.update(state, {url: {$set: action.payload}})
     case ADD_PRODUCT_TO_CART:
-      return State.update(state, {cartItems: {$apply: (item) => item.id === action.payload.id ? CartItem.update(item, {qty: {$set: item.qty + 1}}) : item}})
+      return addItemToCart(state, action.payload) 
     default:
       return state
   }
