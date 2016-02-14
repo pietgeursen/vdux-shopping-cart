@@ -13,7 +13,8 @@ const CartItem = t.struct({
   qty: t.Number
 }, 'CartItem')
 
-const CartItems = t.list(CartItem, 'CartItems')
+const CartItems = t.list(CartItem)
+
 
 const State = t.struct({
   products: Products,  
