@@ -17,9 +17,12 @@ const INITIAL_STATE ={
   url: '/'
 } 
 
+
 function addItemToCart(state, product){
-	const item = state.cartItems.find(item => item.id === product.id) 
-	return State.update(state, {cartItems: {$push: [CartItem({id: product.id, qty: 1})] }})
+	const itemIndex = state.cartItems.findIndex(item => item.id === product.id) 
+	return (itemIndex != -1) ?
+		State.update(state, {cartItems: {[itemIndex]: {qty: {$apply: qty => qty + 1}}}}) :
+		State.update(state, {cartItems: {$push: [CartItem({id: product.id, qty: 1})] }})
 }
 
 function reducer(state = INITIAL_STATE, action) {
