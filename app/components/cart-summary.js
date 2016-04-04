@@ -15,7 +15,7 @@ function render(state) {
 				]))),
 				h('div', {class: 'total'}, [
 					h('h5', {textContent: 'Total:'}),
-					total
+					h('div', {class: 'value'}, total)
 				])
 			])	
      ]) 
